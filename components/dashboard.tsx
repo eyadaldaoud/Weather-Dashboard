@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { WeatherData } from "./Types";
 import Theme from "./Theme";
-import Image from "next/image";
 
 export function Dashboard() {
   const [Weather, setWeather] = useState<WeatherData>();
@@ -70,12 +69,10 @@ export function Dashboard() {
             <div className="w-20 h-20 animate-pulse bg-slate-500 rounded-xl" />
           ) : (
             <div className="flex items-center gap-4">
-              <Image
+              <img
                 className=" w-24 h-24"
                 alt="Weather image"
-                src={`https://${Weather?.current.condition.icon}`}
-                width={500}
-                height={500}
+                src={Weather?.current.condition.icon}
               />
 
               <div>
@@ -123,12 +120,10 @@ export function Dashboard() {
                   {isLoading ? (
                     <div className="w-20 h-20 bg-slate-500 animate-pulse rounded" />
                   ) : (
-                    <Image
+                    <img
                       alt="Weather image"
                       className=" w-12 h-12"
-                      src={`https://${item.day.condition.icon}`}
-                      width={500}
-                      height={500}
+                      src={item.day.condition.icon}
                     />
                   )}
 
