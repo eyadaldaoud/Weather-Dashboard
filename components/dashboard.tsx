@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { WeatherData } from "./Types";
 import Theme from "./Theme";
 import Image from "next/image";
@@ -24,13 +23,12 @@ export function Dashboard() {
   });
 
   const getWeather = async () => {
-    const data: WeatherData = await axios
-      .get(
-        `http://api.weatherapi.com/v1/forecast.json?key=fbfc77c8c9a94101804175513231111&q=${Location}&days=5&aqi=no&alerts=no`
-      )
-      .then((res) => {
-        return res.data;
-      });
+    const data: WeatherData = await fetch(
+      `http://api.weatherapi.com/v1/forecast.json?key=fbfc77c8c9a94101804175513231111&q=${Location}&days=5&aqi=no&alerts=no`,
+      { method: "GET" }
+    ).then((res) => {
+      return res.json();
+    });
     setWeather(data);
   };
 
@@ -49,6 +47,7 @@ export function Dashboard() {
         <div className="flex gap-4">
           <select
             onClick={(e: any) => setLocation(e.target.value)}
+            defaultValue={"ny"}
             className="p-2 text-base border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
           >
             <option disabled selected>
