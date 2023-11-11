@@ -24,7 +24,7 @@ export function Dashboard() {
 
   const getWeather = async () => {
     const data: WeatherData = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=fbfc77c8c9a94101804175513231111&q=${Location}&days=5&aqi=no&alerts=no`,
+      `https://api.weatherapi.com/v1/forecast.json?key=fbfc77c8c9a94101804175513231111&q=${Location}&days=5&aqi=no&alerts=no`,
       { method: "GET" }
     ).then((res) => {
       return res.json();
