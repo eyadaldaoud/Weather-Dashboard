@@ -42,12 +42,17 @@ export function Dashboard() {
       className="flex flex-col h-screen p-6 dark:text-white text-black"
     >
       <header className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl font-bold">Weather Dashboard</h1>
+        <h1 className="sm:text-4xl text-xl font-bold p-4">Weather Dashboard</h1>
         <div className="flex gap-4">
+          <Theme />
+        </div>
+      </header>
+      <main className="flex flex-col gap-8 md:flex-row md:gap-12 lg:gap-16">
+        <div className="dark:bg-zinc-900 bg-gray-100 rounded-lg p-6 flex-1">
           <select
             onClick={(e: any) => setLocation(e.target.value)}
             defaultValue={"ny"}
-            className="p-2 text-base border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            className="p-2 mb-4  w-full text-base border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
           >
             <option disabled selected>
               Select a country
@@ -58,12 +63,6 @@ export function Dashboard() {
               </option>
             ))}
           </select>
-
-          <Theme />
-        </div>
-      </header>
-      <main className="flex flex-col gap-8 md:flex-row md:gap-12 lg:gap-16">
-        <div className="dark:bg-zinc-900 bg-gray-100 rounded-lg p-6 flex-1">
           <h2 className="text-2xl font-semibold mb-4">Today's Weather</h2>
           {isLoading ? (
             <div className="w-20 h-20 animate-pulse bg-slate-500 rounded-xl" />
